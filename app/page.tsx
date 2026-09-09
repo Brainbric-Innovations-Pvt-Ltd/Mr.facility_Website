@@ -1,69 +1,125 @@
-import Image from "next/image";
+"use client";
+
+import React, { useState } from "react";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import Solutions from "@/components/Solutions";
+import EmployeeManagement from "@/components/EmployeeManagement";
+import AttendanceManagement from "@/components/AttendanceManagement";
+import PayrollManagement from "@/components/PayrollManagement";
+import CTA from "@/components/CTA";
+import Footer from "@/components/Footer";
+import FloatingContact from "@/components/FloatingContact";
+import Modals from "@/components/Modals";
+import SplashScreen from "@/components/SplashScreen";
+import ScrollRevealProvider from "@/components/ScrollRevealProvider";
+import SiteManagement from "@/components/SiteManagement";
+import Applications from "@/components/Applications";
+import DesktopNoticeModal from "@/components/DesktopNoticeModal";
+import { isMobileResponsiveView } from "@/components/deviceUtils";
 
 export default function Home() {
+  const [modalState, setModalState] = useState<{
+    isOpen: boolean;
+    type: "demo" | "login";
+  }>({
+    isOpen: false,
+    type: "demo",
+  });
+
+  const [desktopNoticeOpen, setDesktopNoticeOpen] = useState(false);
+
+  const handleOpenDemo = () => {
+    setModalState({ isOpen: true, type: "demo" });
+  };
+
+  const handleOpenLogin = (e?: React.MouseEvent) => {
+    if (isMobileResponsiveView()) {
+      if (e) e.preventDefault();
+      setDesktopNoticeOpen(true);
+      return;
+    }
+    window.open("https://app.mrfacility.in/", "_blank", "noopener,noreferrer");
+  };
+
+  const handleCloseModal = () => {
+    setModalState((prev) => ({ ...prev, isOpen: false }));
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <div className="relative min-h-screen bg-white text-slate-900 flex flex-col selection:bg-[#00A651] selection:text-white">
+      {/* Global Smooth Scroll and Loading Reveal Provider */}
+      <ScrollRevealProvider />
+
+      {/* Dynamic Animated Splash Screen */}
+      <SplashScreen />
+
+      {/* Fixed Navbar */}
+      <Navbar
+        onOpenDemo={handleOpenDemo}
+        onOpenLogin={handleOpenLogin}
+        onOpenDesktopNotice={() => setDesktopNoticeOpen(true)}
+      />
+
+      {/* Main Continuous Single-Page Product Narrative */}
+      <main className="flex-1">
+        {/* 1. Hero Section */}
+        <Hero
+          onOpenDemo={handleOpenDemo}
+          onOpenLogin={handleOpenLogin}
+          onOpenDesktopNotice={() => setDesktopNoticeOpen(true)}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+
+        {/* 2. Solutions / Features Overview */}
+        <Solutions onOpenDemo={handleOpenDemo} />
+
+        {/* 3. Dedicated Employee Management Section */}
+        <div id="employee-management">
+          <EmployeeManagement />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        {/* 4. Dedicated Attendance Management Section */}
+        <AttendanceManagement />
+
+        {/* 5. Dedicated Payroll Management Section */}
+        <PayrollManagement />
+
+        {/* 6. Dedicated Site Management Section */}
+        <div id="site-management">
+          <SiteManagement />
         </div>
+
+        {/* 7. Dedicated Applications Section */}
+        <div id="applications">
+          <Applications onOpenDemo={handleOpenDemo} />
+        </div>
+
+        {/* 8. Final Enterprise CTA */}
+        <CTA onOpenDemo={handleOpenDemo} onOpenLogin={handleOpenLogin} />
       </main>
+
+      {/* 9. Enterprise Footer with Full Logo Visibility */}
+      <Footer />
+
+      {/* 10. Fixed Floating Contact Buttons (WhatsApp & CALL) */}
+      <FloatingContact />
+
+      {/* Interactive Modals for Login & Request a Demo */}
+      <Modals
+        isOpen={modalState.isOpen}
+        type={modalState.type}
+        onClose={handleCloseModal}
+      />
+
+      {/* Notice modal when mobile user attempts to login */}
+      <DesktopNoticeModal
+        isOpen={desktopNoticeOpen}
+        onClose={() => setDesktopNoticeOpen(false)}
+        onOpenDemo={() => {
+          setDesktopNoticeOpen(false);
+          handleOpenDemo();
+        }}
+      />
     </div>
   );
 }
