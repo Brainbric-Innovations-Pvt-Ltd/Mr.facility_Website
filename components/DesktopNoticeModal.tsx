@@ -64,14 +64,6 @@ export default function DesktopNoticeModal({
           </div>
         </div>
 
-        {/* Tag */}
-        <div className="mt-4">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-[11px] font-bold text-amber-700 border border-amber-200/60">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse" />
-            Desktop Web View Only
-          </span>
-        </div>
-
         {/* Title */}
         <h3
           id="desktop-notice-title"
@@ -84,41 +76,6 @@ export default function DesktopNoticeModal({
         <p className="text-xs sm:text-sm text-slate-600 mt-2.5 leading-relaxed px-1">
           The MR Facility enterprise management portal is designed and optimized exclusively for desktop and laptop browsers. Login is restricted on mobile devices to preserve advanced dashboard, geofence mapping, and payroll workflows.
         </p>
-
-        {/* Portal URL Box with One-Click Copy */}
-        <div className="mt-5 p-3 sm:p-3.5 rounded-2xl bg-slate-50 border border-slate-200/80 text-left">
-          <div className="flex items-center justify-between text-[11px] font-semibold text-slate-500 mb-1.5">
-            <span>WEB APPLICATION URL</span>
-            <span className="text-[#00A651] font-bold">Secure SSL</span>
-          </div>
-
-          <div className="flex items-center justify-between gap-2 bg-white px-3 py-2 rounded-xl border border-slate-200">
-            <code className="text-xs font-mono font-semibold text-[#151B6B] truncate">
-              https://app.mrfacility.in/
-            </code>
-            <button
-              type="button"
-              onClick={handleCopyLink}
-              className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition-all shrink-0 cursor-pointer"
-            >
-              {copied ? (
-                <>
-                  <Check className="w-3.5 h-3.5 text-[#00A651]" />
-                  <span className="text-[#00A651]">Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy className="w-3.5 h-3.5 text-slate-500" />
-                  <span>Copy</span>
-                </>
-              )}
-            </button>
-          </div>
-
-          <p className="text-[11px] text-slate-500 mt-2 text-center">
-            Open this URL on your PC or Mac browser to log in to your account.
-          </p>
-        </div>
 
         {/* Action Buttons */}
         <div className="mt-6 flex flex-col gap-2.5">

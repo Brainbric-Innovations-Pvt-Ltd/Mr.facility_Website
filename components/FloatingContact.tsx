@@ -47,7 +47,7 @@ export default function FloatingContact() {
           <button
             onClick={() => handleAction("whatsapp")}
             aria-label="Chat on WhatsApp"
-            className="flex items-center gap-2 px-3.5 py-3.5 sm:px-4 sm:py-3 rounded-full bg-[#00A651] text-white shadow-xl shadow-emerald-600/35 hover:shadow-2xl hover:shadow-emerald-600/50 hover:-translate-y-0.5 active:scale-95 transition-all duration-200 border-2 border-white focus:outline-none focus:ring-4 focus:ring-emerald-400/40"
+            className="flex items-center gap-2 px-3.5 py-3.5 sm:px-4 sm:py-4 rounded-full bg-[#00A651] text-white shadow-xl shadow-emerald-600/35 hover:shadow-2xl hover:shadow-emerald-600/50 hover:-translate-y-0.5 active:scale-95 transition-all duration-200 border-2 border-white focus:outline-none focus:ring-4 focus:ring-emerald-400/40"
           >
             {/* WhatsApp Authentic SVG */}
             <svg
@@ -70,7 +70,7 @@ export default function FloatingContact() {
           <button
             onClick={() => handleAction("call")}
             aria-label="Call MR Facility"
-            className="flex items-center gap-2 px-3.5 py-3.5 sm:px-4 sm:py-3 rounded-full bg-[#151B6B] text-white shadow-xl shadow-[#151B6B]/35 hover:shadow-2xl hover:shadow-[#151B6B]/50 hover:-translate-y-0.5 active:scale-95 transition-all duration-200 border-2 border-white focus:outline-none focus:ring-4 focus:ring-[#151B6B]/40"
+            className="flex items-center gap-2 px-3.5 py-3.5 sm:px-4 sm:py-4 rounded-full bg-[#151B6B] text-white shadow-xl shadow-[#151B6B]/35 hover:shadow-2xl hover:shadow-[#151B6B]/50 hover:-translate-y-0.5 active:scale-95 transition-all duration-200 border-2 border-white focus:outline-none focus:ring-4 focus:ring-[#151B6B]/40"
           >
             <Phone className="w-5 h-5 shrink-0" />
           </button>

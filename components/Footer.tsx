@@ -42,7 +42,7 @@ export default function Footer() {
               and client relationships in one unified ecosystem.
             </p>
 
-            <div className="pt-1 space-y-2 text-xs text-slate-500">
+            {/* <div className="pt-1 space-y-2 text-xs text-slate-500">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-[#00A651] shrink-0" />
                 <span>Enterprise Facility Operations</span>
@@ -55,7 +55,7 @@ export default function Footer() {
                 <Shield className="w-4 h-4 text-[#00A651] shrink-0" />
                 <span>Enterprise Security & Data Protection</span>
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Column 2: Solutions */}
@@ -133,7 +133,7 @@ export default function Footer() {
           </div>
 
           {/* Column 4: Company (Spans 2 cols on mobile with clean 2x2 grid) */}
-          <div className="col-span-2 sm:col-span-1 space-y-3">
+          {/* <div className="col-span-2 sm:col-span-1 space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
               Company
             </h4>
@@ -171,7 +171,7 @@ export default function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
+          </div> */}
         </div>
 
         {/* Bottom Bar */}
